@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>文物故事征集计划</title>
+  <style>
+    body {
+      font-family: "Noto Serif SC", serif;
+      margin: 0;
+      background-color: #fdfaf4;
+      color: #3b2e2a;
+      padding: 20px;
+    }
+
+    header, section, footer {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px 0;
+    }
+
+    h1 {
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+
+    p {
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .cta-button, .back-button {
+      display: block;
+      margin: 20px auto;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #b08968;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, textarea {
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    small {
+      font-size: 12px;
+      color: #888;
+    }
+
+    footer {
+      font-size: 14px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 首页 -->
+  <header id="home">
+    <h1>让民间珍藏 · 重新归位于文明长河</h1>
+    <h2>2025文物修复与征集计划正式启动<br>由中华文物协会携手佳士得发起</h2>
+    <p>每一件沉睡的藏品，<br>也许都藏着一段被历史遗忘的声音。</p>
+    <p>我们邀请您，讲述它的故事，<br>让它再次被这个时代听见。</p>
+    <button class="cta-button" onclick="showForm()">我要讲述藏品的故事</button>
+  </header>
+
+  <!-- 表单 -->
+  <section id="form-section" class="hidden">
+    <h2>讲述一段藏品的故事，<br>让它重新被世界看见。</h2>
+    <p>我们诚邀热爱历史与文物的您，提交一件藏品的图文与故事。</p>
+    <form id="artifact-form" onsubmit="submitForm(event)">
+      <label>藏品名称 / 昵称</label>
+      <input type="text" name="name" placeholder="如：祖传青瓷碗" required />
+
+      <label>藏品图片上传</label>
+      <input type="file" name="image" accept="image/*" required />
+      <small>建议拍摄正面和局部特写</small>
+
+      <label>藏品故事描述</label>
+      <textarea name="story" rows="4" maxlength="200" placeholder="来自哪位长辈？为何保留至今？" required></textarea>
+
+      <label>联系方式</label>
+      <input type="text" name="contact" placeholder="仅用于专家后续联络" required />
+      <small>我们承诺不作他用</small>
+
+      <button type="submit" class="cta-button">提交我的藏品故事</button>
+    </form>
+  </section>
+
+  <!-- 成功页 -->
+  <section id="success-section" class="hidden">
+    <h1>您的故事，已被收藏。</h1>
+    <p>感谢您为这段珍贵历史留下印记。<br>
+      我们的文化顾问团队将在1-3日内评估您的提交内容。</p>
+    <p>如符合入选标准，我们将以“文物修复专项联络员”身份联系您。</p>
+    <p><strong>每一件民间藏品，都是中华文明的一页。</strong><br>再次感谢您的信任与参与。</p>
+    <button class="back-button" onclick="goHome()">返回首页</button>
+  </section>
+
+  <footer>
+    传承·修复·再生｜中华文明的复调正在重奏<br>
+    本计划信息将保密处理，用于文化征集及修复推荐。
+  </footer>
+
+  <script>
+    function showForm() {
+      document.getElementById('home').classList.add('hidden');
+      document.getElementById('form-section').classList.remove('hidden');
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      document.getElementById('form-section').classList.add('hidden');
+      document.getElementById('success-section').classList.remove('hidden');
+    }
+
+    function goHome() {
+      document.getElementById('success-section').classList.add('hidden');
+      document.getElementById('home').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
